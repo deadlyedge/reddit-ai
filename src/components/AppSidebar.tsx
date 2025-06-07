@@ -22,8 +22,8 @@ import {
 import ReddishLogo from "@/images/Reddish Full.png"
 import Image from "next/image"
 import Link from "next/link"
-// import { getSubreddits } from "@/sanity/lib/subreddit/getSubreddits";
-// import CreateCommunityButton from "./header/CreateCommunityButton";
+import { getSubreddits } from "@/sanity/lib/subreddit/getSubreddits"
+import CreateCommunityButton from "./header/CreateCommunityButton";
 
 type SidebarData = {
 	navMain: {
@@ -41,23 +41,23 @@ export async function AppSidebar({
 	...props
 }: React.ComponentProps<typeof Sidebar>) {
 	// TODO: get all subreddits from sanity
-	// const subreddits = await getSubreddits();
+	const subreddits = await getSubreddits()
 
 	// This is sample data.
-	// const sidebarData: SidebarData = {
-	//   navMain: [
-	//     {
-	//       title: "Communities",
-	//       url: "#",
-	//       items:
-	//         subreddits?.map((subreddit) => ({
-	//           title: subreddit.title || "unknown",
-	//           url: `/community/${subreddit.slug}`,
-	//           isActive: false,
-	//         })) || [],
-	//     },
-	//   ],
-	// };
+	const sidebarData: SidebarData = {
+		navMain: [
+			{
+				title: "Communities",
+				url: "#",
+				items:
+					subreddits?.map((subreddit) => ({
+						title: subreddit.title || "unknown",
+						url: `/community/${subreddit.slug}`,
+						isActive: false,
+					})) || [],
+			},
+		],
+	}
 
 	return (
 		<Sidebar {...props}>
@@ -77,14 +77,14 @@ export async function AppSidebar({
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
-				{/* <SearchForm /> */}
+				<SearchForm />
 			</SidebarHeader>
 			<SidebarContent>
 				<SidebarGroup>
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild>
-								{/* <CreateCommunityButton /> */}
+								<CreateCommunityButton />
 							</SidebarMenuButton>
 
 							<SidebarMenuButton asChild className="p-5">
@@ -112,39 +112,37 @@ export async function AppSidebar({
 
 				<SidebarGroup>
 					<SidebarMenu>
-						{/* {sidebarData.navMain.map((item, index) => (
-              <Collapsible
-                key={item.title}
-                defaultOpen={index === 1}
-                className="group/collapsible"
-              >
-                <SidebarMenuItem>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuButton>
-                      {item.title}{" "}
-                      <Plus className="ml-auto group-data-[state=open]/collapsible:hidden" />
-                      <Minus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
-                    </SidebarMenuButton>
-                  </CollapsibleTrigger>
-                  {item.items?.length ? (
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items.map((item) => (
-                          <SidebarMenuSubItem key={item.title}>
-                            <SidebarMenuSubButton
-                              asChild
-                              isActive={item.isActive}
-                            >
-                              <Link href={item.url}>{item.title}</Link>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  ) : null}
-                </SidebarMenuItem>
-              </Collapsible>
-            ))} */}
+						{sidebarData.navMain.map((item, index) => (
+							<Collapsible
+								key={item.title}
+								defaultOpen={index === 1}
+								className="group/collapsible">
+								<SidebarMenuItem>
+									<CollapsibleTrigger asChild>
+										<SidebarMenuButton>
+											{item.title}{" "}
+											<Plus className="ml-auto group-data-[state=open]/collapsible:hidden" />
+											<Minus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
+										</SidebarMenuButton>
+									</CollapsibleTrigger>
+									{item.items?.length ? (
+										<CollapsibleContent>
+											<SidebarMenuSub>
+												{item.items.map((item) => (
+													<SidebarMenuSubItem key={item.title}>
+														<SidebarMenuSubButton
+															asChild
+															isActive={item.isActive}>
+															<Link href={item.url}>{item.title}</Link>
+														</SidebarMenuSubButton>
+													</SidebarMenuSubItem>
+												))}
+											</SidebarMenuSub>
+										</CollapsibleContent>
+									) : null}
+								</SidebarMenuItem>
+							</Collapsible>
+						))}
 					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarContent>
