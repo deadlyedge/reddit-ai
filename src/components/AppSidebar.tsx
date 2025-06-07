@@ -1,11 +1,11 @@
 import { FlameIcon, HomeIcon, Minus, Plus, TrendingUpIcon } from "lucide-react"
 
-import { SearchForm } from "@/components/search-form";
+import { SearchForm } from "@/components/search-form"
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 import {
 	Sidebar,
 	SidebarContent,
@@ -19,8 +19,8 @@ import {
 	SidebarMenuSubItem,
 	SidebarRail,
 } from "@/components/ui/sidebar"
-import Image from "next/image"
 import ReddishLogo from "@/images/Reddish Full.png"
+import Image from "next/image"
 import Link from "next/link"
 // import { getSubreddits } from "@/sanity/lib/subreddit/getSubreddits";
 // import CreateCommunityButton from "./header/CreateCommunityButton";

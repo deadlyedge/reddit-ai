@@ -1,14 +1,14 @@
 "use client"
 
-import Image from "next/image"
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import { ChevronLeftIcon, MenuIcon } from "lucide-react"
+import Image from "next/image"
 
 import ReddishLogo from "@/images/Reddish Full.png"
 import ReddishLogoOnly from "@/images/Reddish Logo Only.png"
 
-import { useSidebar } from "@/components/ui/sidebar"
 import { Button } from "@/components/ui/button"
+import { useSidebar } from "@/components/ui/sidebar"
 // import CreatePost from "../post/CreatePost";
 
 export const Header = () => {

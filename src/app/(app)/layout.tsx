@@ -3,9 +3,9 @@ import { Noto_Serif } from "next/font/google"
 
 import { ClerkProvider } from "@clerk/nextjs"
 
+import { AppSidebar } from "@/components/AppSidebar"
 import { Header } from "@/components/Header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/AppSidebar"
 
 import "../globals.css"
 
